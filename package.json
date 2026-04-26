@@ -5,9 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx",
-    "start": "node dist/index.js"
+    "dev:be": "pnpm --filter backend run dev",
+    "dev:fe": "pnpm --filter frontend run dev"
   },
   "keywords": [],
   "author": "",
