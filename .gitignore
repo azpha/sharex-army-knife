@@ -1,0 +1,4 @@
+node_modules
+.env
+packages/database/prisma/generated
+data

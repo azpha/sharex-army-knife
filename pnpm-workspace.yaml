@@ -1,0 +1,12 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  '@prisma/engines': false
+  bcrypt: false
+  better-sqlite3: true
+  esbuild: false
+  prisma: true
+catalogs:
+  prisma:
+    prisma: latest

@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Screenshot {
+  identifier String   @id
+  name       String
+  type       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Link {
+  identifier String   @id
+  url        String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+}
+
+model Text {
+  identifier String   @id
+  text       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+  user       User?    @relation(fields: [userId], references: [id])
+  userId     Int?
+}
+
+model File {
+  identifier String   @id
+  type       String
+  name       String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+  user       User?    @relation(fields: [userId], references: [id])
+  userId     Int?
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  password    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+  admin       Boolean  @default(false)
+  uploadToken String?
+
+  links       Link[]
+  screenshots Screenshot[]
+  texts       Text[]
+  files       File[]
+}
