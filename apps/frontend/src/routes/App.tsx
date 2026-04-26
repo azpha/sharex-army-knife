@@ -149,7 +149,7 @@ function App() {
                     Links
                   </p>
                 </div>
-                <div className="border border-solid border-white p-2 max-h-200 overflow-y-auto">
+                <div className="border border-solid border-white p-2 h-200 w-70 overflow-y-auto">
                   {tab === "screenshots" &&
                     data["screenshots"].map((v) => (
                       <ItemRow name={v.name} identifier={v.identifier} />
